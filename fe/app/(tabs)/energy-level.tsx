@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Svg, { Path, Line, Circle, G } from "react-native-svg";
 import BoltLightningIcon from "../../assets/images/bolt-lightning.svg";
+import { router } from "expo-router";
 
 type ActivityStatus = "pending" | "completed" | "skipped";
 
@@ -81,14 +82,14 @@ const EnergyForecastChart = () => {
           cx={
             padding +
             ((optimalData.length - 1) * (width - 2 * padding)) /
-              (optimalData.length - 1)
+            (optimalData.length - 1)
           }
           cy={
             height -
             padding -
             ((optimalData[optimalData.length - 1] - minValue) /
               (maxValue - minValue)) *
-              (height - 2 * padding)
+            (height - 2 * padding)
           }
           r="4"
           fill="#0D9488"
@@ -97,14 +98,14 @@ const EnergyForecastChart = () => {
           cx={
             padding +
             ((currentData.length - 1) * (width - 2 * padding)) /
-              (currentData.length - 1)
+            (currentData.length - 1)
           }
           cy={
             height -
             padding -
             ((currentData[currentData.length - 1] - minValue) /
               (maxValue - minValue)) *
-              (height - 2 * padding)
+            (height - 2 * padding)
           }
           r="4"
           fill="#8B4513"
@@ -154,7 +155,7 @@ export default function DailyPlanScreen() {
             <Pressable style={styles.noChangesButton}>
               <Text style={styles.noChangesButtonText}>No Changes</Text>
             </Pressable>
-            <Pressable style={styles.adjustPlanButtonEnergy}>
+            <Pressable style={styles.adjustPlanButtonEnergy} onPress={() => router.push("/daily-plan")}>
               <Text style={styles.adjustPlanButtonTextEnergy}>Adjust Plan</Text>
             </Pressable>
           </View>
